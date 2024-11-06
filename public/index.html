@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf8">
+		<title>Cloudflare Pages | PAT Demo</title>
+		<meta name="theme-color" content="#d86300">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="icon" type="image/png" href="https://www.cloudflare.com/favicon-128.png">
+		<link rel="stylesheet" href="/index.css">
+		<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=_turnstileCb" defer></script>
+	</head>
+	<body>
+
+		<main>
+			<header>
+				<a href="https://dash.cloudflare.com">
+					<img src="https://blog.cloudflare.com/content/images/2022/10/CF_logo_stacked_blktype.png" class="header-img" />
+				</a>
+			</header>
+			<div class="box">
+				<h1>Log in to PAT demo</h1>
+
+				<blockquote>
+					<p>This demo login form is for Privacy Access Token (PAT) testing purposes. <br />
+						We do not store or log any information from the login form.
+						<br />
+						<b>Turnstile require interaction if PAT is not present. Turnstile will continue straight to success state if PAT is present.</b>
+					</p>
+				</blockquote>
+
+				<form method="POST" action="/api/login">
+					<div class="input">
+						<label for="userId">User Id</label>
+						<input id="userId" name="userId" type="text" />
+					</div>
+
+					<div class="input">
+						<label for="password">Password</label>
+						<input id="password" name="password" type="password" />
+					</div>
+					<div id="turnstile-widget" style="padding-top: 20px;"></div>
+					<button type="submit">Log in</button>
+				</form>
+			</div>
+			<img src="https://imagedelivery.net/VwlVUhFtttnKb35OulAlxg/34051495-3bc0-48c9-39cc-7ec46964a900/Large" class="img" />
+		</main>
+	<script>
+	// This function is called when the Turnstile script is loaded and ready to be used.
+	function _turnstileCb() {
+	    turnstile.render('#turnstile-widget', {
+	      sitekey: '0x4AAAAAAAeujPH0yh1VovEe',
+	      theme: 'light',
+	    });
+	}
+	</script>
+	</body>
+</html>
